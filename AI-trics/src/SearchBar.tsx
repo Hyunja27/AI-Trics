@@ -19,8 +19,8 @@ export default function SearchBar() {
 
   return (
       <SearchBarContainer>
-        <input type="text" onChange={handleText} />
-        { autoComplete && (
+        <InputZone type="text" onChange={handleText} />
+        { autoComplete.length === 0 ? null : (
           <DropDownList>
             {(autoComplete.map((elem) => {
               return (
@@ -37,25 +37,29 @@ export default function SearchBar() {
 }
 
 const SearchBarContainer = styled("div", {
-  height: "100%",
-  width: "100%",
-  position: "absolute",
+  height: "100vh",
+  width: "100vw",
+  margin: "auto",
+  position: "relative",
   display: "flex",
   alignItems: "center",
   justifyContent: "center"
 });
 
-const DropDownItem = styled("li", {
+const InputZone = styled("input", {
+  height: "2em",
+  width: "40em",
 });
 
 const DropDownList = styled("ul", {
-  height: "5px",
-  width: "100%",
-  display: "block",
-  margin: "0 auto",
-  padding: "8px 0",
+  height: "2em",
+  display: "absolute",
+  position: "relative",
   backgroundColor: "white",
   border: "1px solid rgba(0, 0, 0, 0.3)",
   boxShadow: "0 10px 10px rgb(0, 0, 0, 0.3)",
   zIndex: "3"
+});
+
+const DropDownItem = styled("li", {
 });
